@@ -3,12 +3,12 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
 `;
 
-export const RestaurantImage = styled.Image`
+export const MarketImage = styled.Image`
   width: 74px;
   height: 74px;
   border-radius: 10px;
 `
 
-export const RestaurantTitle = styled.Text`
+export const MarketTitle = styled.Text`
   color: #FFFFFF;
 `

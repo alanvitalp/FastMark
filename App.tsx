@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components/native'
 import Routes from './src/routes';
 import theme from './src/styles/theme';
 

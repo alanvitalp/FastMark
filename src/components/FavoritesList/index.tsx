@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { Container } from './styles';
 
-import Restaurant from './Restaurants'
+import Markets from './Markets'
 
 
 const Favorites: React.FC = () => {
@@ -34,7 +34,7 @@ const Favorites: React.FC = () => {
     <Container>
       {favorites.map(restaurant => {
         return (
-          <Restaurant key={restaurant.id} restaurant={restaurant} />
+          <Markets key={restaurant.id} restaurant={restaurant} />
         )
       })}
     </Container>

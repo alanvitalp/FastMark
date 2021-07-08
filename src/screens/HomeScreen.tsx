@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import theme from '../styles/theme';
 import Favorites from '../components/FavoritesList';
 import BestPrices from '../components/BestPrices';
+import TabBar from '../components/TabBar';
 
 const Container = styled.View`
   flex: 1;
@@ -17,7 +18,8 @@ const Home: React.FC = () => {
     <Container theme={theme}>
       <Header/>
       <Favorites />
-      {/* <BestPrices/> */}
+      <BestPrices/>
+      <TabBar/>
     </Container>
   );
 }

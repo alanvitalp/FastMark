@@ -1,12 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native'
 
-import { Container, RestaurantTitle, RestaurantImage } from './styles';
+import { Container, MarketTitle, MarketImage } from './styles';
 
 type RestaurantProps = {
   key: number;
   restaurant: {
-    id: number;
     img: string;
     name: string;
   }
@@ -15,8 +13,8 @@ type RestaurantProps = {
 const Restaurants: React.FC<RestaurantProps> = ( { restaurant: { img, name } } ) => {
   return (
   <Container>
-    <RestaurantImage source={{ uri: img }}/>
-    <RestaurantTitle>{name}</RestaurantTitle>
+    <MarketImage source={{ uri: img }}/>
+    <MarketTitle>{name}</MarketTitle>
   </Container>
   );
 }
