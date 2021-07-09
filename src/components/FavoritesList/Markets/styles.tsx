@@ -11,4 +11,5 @@ export const MarketImage = styled.Image`
 
 export const MarketTitle = styled.Text`
   color: #FFFFFF;
+  font-family: "Poppins-Medium";
 `

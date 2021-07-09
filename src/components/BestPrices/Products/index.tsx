@@ -9,7 +9,6 @@ import {
    Price, 
    Discount, 
    Market, 
-   ProductImage, 
    Details} from './styles';
 
 

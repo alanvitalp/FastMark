@@ -14,6 +14,7 @@ export const BestPricesTitle = styled.Text`
   font-size: 24px;
   color: #FFFFFF;
   white-space: nowrap;
+  font-family: "Poppins-Medium";
 
   padding: 0rem 1rem;
 `
@@ -23,5 +24,6 @@ export const SeeAllLabel = styled.Text`
   line-height: 20px;
   font-size: 14px;
   color: #FFFFFF;
-  padding: 12px 32px;
+  padding: 12px 10px;
+  font-family: "Poppins-Regular";
 `

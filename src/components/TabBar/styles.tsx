@@ -7,7 +7,6 @@ export const Container = styled.View`
   height: 80px; 
   width: 100%;
   background: #FFFFFF;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +17,6 @@ export const Icons = styled.View`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-
   color: ${({ theme }) => theme.colors.tabIconColor};
   gap: 75px;
 `

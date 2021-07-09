@@ -29,7 +29,7 @@ export const Card = styled.View<CardImageProps>`
 `
 
 export const Details = styled.View`
-  width: 268;
+  width: 268px;
   height: 101px;
   border-radius: 8px;
   mix-blend-mode: normal;
@@ -44,12 +44,14 @@ export const Details = styled.View`
 export const ProductTitle = styled.Text`
   font-size: 16px;
   color: #FFFFFF;
+  font-family: "Poppins-Medium";
 `
 export const Market = styled.Text`
   color: #FFFFFF;
   white-space: nowrap;
   font-size: 12px;
   margin-top: 4px;
+  font-family: "Poppins-Regular";
 `
 export const ProductPrice = styled.View`
   display: flex;
@@ -64,15 +66,12 @@ export const Price = styled.Text`
   text-decoration: line-through black;
   line-height: 20px;
   letter-spacing: -0.24px;
+  font-family: "Poppins-Medium";
 `
 
 export const Discount = styled.Text`
   color: #FFFFFF;
   line-height: 20px;
   letter-spacing: -0.24px;
-`
-
-export const ProductImage = styled.Image`
-  width: 150px;
-  height: 200px;
+  font-family: "Poppins-Medium";
 `
