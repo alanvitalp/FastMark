@@ -3,7 +3,11 @@ import { View } from 'react-native';
 
 // import { Container } from './styles';
 
-const screens: React.FC = () => {
+type ShoppingProps = {
+  navigation: any;
+}
+
+const screens: React.FC<ShoppingProps> = ({ navigation }) => {
   return <View />;
 }
 

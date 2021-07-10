@@ -3,7 +3,12 @@ import { View } from 'react-native';
 
 // import { Container } from './styles';
 
-const screens: React.FC = () => {
+type UserProps = {
+  navigation: any;
+};
+
+
+const screens: React.FC<UserProps> = ({ navigation }) => {
   return <View />;
 }
 

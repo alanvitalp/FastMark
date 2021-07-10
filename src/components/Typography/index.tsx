@@ -8,7 +8,8 @@ type TypoTextProps = {
 }
 
 const Typography = styled(Text)<TypoTextProps>`
-  ${({ variant }) => typography[variant || 'p']}
+  ${({ variant }) => typography[variant || 'p']};
+  
 `
 
 export default Typography;

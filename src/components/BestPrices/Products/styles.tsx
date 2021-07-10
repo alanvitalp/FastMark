@@ -4,7 +4,7 @@ interface CardImageProps {
   readonly url: string;
 }
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   margin-top: 26px;
 `;
 

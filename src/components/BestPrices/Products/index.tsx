@@ -5,32 +5,35 @@ import {
    Container,
    Card, 
    ProductPrice, 
-   ProductTitle, 
    Price, 
    Discount, 
    Market, 
-   Details} from './styles';
+   Details,
+   ProductTitle} from './styles';
 
 
 type ProductProps = {
+  product: {
     id: number;
     name: string;
     market: string;
-    discount: string;
+    discountPrice: string;
     price: string;
-    image: string;
+    img: string;
+    onPress: () => void;
+  }
 } 
 
-const Products: React.FC<ProductProps> = ({ name, market, discount, price, image }) => {
+const Products: React.FC<ProductProps> = ({ product: { id, name, market, discountPrice, price, img } }) => {
 
   return (
     <Container>
-      <Card url={image}>
+      <Card url={img}>
         <Details>
           <ProductTitle>{name}</ProductTitle>
           <Market>{market}</Market>
           <ProductPrice>
-            <Discount>{discount}</Discount>
+            <Discount>{discountPrice}</Discount>
             <Price>{price}</Price>
           </ProductPrice>
         </Details>

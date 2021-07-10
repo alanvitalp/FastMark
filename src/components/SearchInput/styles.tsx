@@ -22,6 +22,6 @@ export const FilterInput = styled.TextInput`
 
 export const SearchIcon = styled(AntDesign)`
   position: absolute;
-  right: 40;
-  top: 11;
+  right: 40px;
+  top: 11px;
 `

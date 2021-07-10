@@ -5,6 +5,7 @@ import Home from './screens/HomeScreen'
 import Search from './screens/SearchScreen'
 import Shopping from './screens/ShoppingScreen'
 import User from "./screens/UserScreen";
+import Market from "./screens/MarketScreen";
 
 
 import { AntDesign } from '@expo/vector-icons';
@@ -15,6 +16,21 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
+
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+const MyStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="home" component={Home} />
+      <Stack.Screen name="search" component={Search} />
+      <Stack.Screen name="shopping" component={Shopping} />
+      <Stack.Screen name="user" component={User} />
+    </Stack.Navigator>
+  );
+}
 
 const Routes = () => {
   return (
@@ -70,7 +86,7 @@ const Routes = () => {
         }}
       >
         <Tab.Screen name="home" component={Home}/>
-        <Tab.Screen name="search" component={Search} />
+        <Tab.Screen name="search" component={Market} />
         <Tab.Screen name="shopping" component={Shopping} />
         <Tab.Screen name="user" component={User} />
       </Tab.Navigator>

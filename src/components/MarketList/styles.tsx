@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-    margin-top: 30px;
+export const Container = styled.ScrollView`
+    margin-top: 20px;
+    margin-bottom: 10px;
 `;

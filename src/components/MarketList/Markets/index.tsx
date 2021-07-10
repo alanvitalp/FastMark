@@ -3,14 +3,17 @@ import React from 'react';
 import { Container, MarketImage } from './styles';
 
 type MarketProps = {
-  id: number;
-  name: string;
-  image: string;
+  markets: {
+    id: number;
+    image: string;
+    name: string;
+    onPress: () => void;
+  }
 }
 
-const Markets: React.FC<MarketProps> = ( { image } ) => {
+const Markets: React.FC<MarketProps> = ( { markets: { id, image, name, onPress } } ) => {
   return (
-    <Container>
+    <Container onPress={onPress}>
       <MarketImage source={{ uri: image }}/>
     </Container>
   );
