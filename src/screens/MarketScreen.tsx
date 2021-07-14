@@ -28,7 +28,7 @@ const MarketDetailsContainer = styled.View`
   position: absolute;
   left: 4%;
   right: 4%;
-  top: 26.72%;
+  top: 26%;
   bottom: 52.59%;
 
   background: #FFFFFF;
@@ -56,7 +56,7 @@ const MarketScreen: React.FC = () => {
           
           elevation: 11,
         }}>
-          <LeftArrowIcon name="left" size={24} color="#E84C4F" />
+          <LeftArrowIcon name="left" size={20} color="#E84C4F" />
         </ArrowContainer>
       </MarketContainer>
       <DetailsContainer>
@@ -65,7 +65,7 @@ const MarketScreen: React.FC = () => {
         <TextContainer>
           <Typography variant="h2">SUPERMERCADO</Typography>
           <MarketAddress>Endereço do supermercado</MarketAddress>
-          <OpenTime>Abre: 8am - 8 pm</OpenTime>
+          <OpenTime>Abre: 8 am - 8 pm</OpenTime>
         </TextContainer>
       </MarketDetailsContainer>
       <ProductContainer>

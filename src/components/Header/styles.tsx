@@ -23,17 +23,47 @@ export const HeaderText = styled.Text`
 
 export const ArrowContainer = styled.View`
   background: #FFFFFF;
-  width: 26px;
+  width: 24px;
+  height: 23.77px;
   border-radius: 30px;
 
   left: 15px;
-  top: 50px;
+  top: 25px;
+
+  align-items: center;
+  justify-content: center;
 `
 
-export const LeftArrowIcon = styled(AntDesign)``
 
-export const TextContainer = styled.View``
+export const EditContainer = styled.View`
+  background: #FFFFFF;
+  /* width: 24px;
+  height: 23.77px; */
+  border-radius: 30px;
 
-export const MarketAddress = styled.Text``
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 339px;
+  top: 25px;
 
-export const OpenTime = styled.Text``
+  align-items: center;
+  justify-content: center;
+`
+
+export const LeftArrowIcon = styled(AntDesign)`
+`
+
+export const TextContainer = styled.View`
+  align-items: center;
+  padding-top: 30px;
+  gap: 14px;
+`
+
+export const MarketAddress = styled.Text`
+  font-family: "Poppins-Regular";
+`
+
+export const OpenTime = styled.Text`
+  font-family: "Poppins-Regular";
+`

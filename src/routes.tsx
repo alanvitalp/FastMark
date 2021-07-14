@@ -36,7 +36,7 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="search"
+        initialRouteName="user"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, tintColor }: any) => {
             if (route.name === 'home') {
