@@ -8,13 +8,15 @@ import { FlatList } from 'react-native-gesture-handler';
 
 type FavoritesProps = {
   favorites: Array<{}>;
+  nav: () => void;
 }
-const Favorites: React.FC<FavoritesProps> = ({ favorites }) => {
+const Favorites: React.FC<FavoritesProps> = ({ nav, favorites }) => {
+
 
   const renderItem = ({ item }: any ) => (
     <Markets
       restaurant={item}
-      // onPress={handleNavigation}
+      navigation={nav}
     />
   );
 

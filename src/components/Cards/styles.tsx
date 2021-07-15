@@ -20,24 +20,34 @@ export const CardContainerLabel = styled.Text`
 `
 
 export const CardContainer = styled.View`
-  justify-content: center;
+  justify-content: space-around;
+  width: 345px;
   align-items: center;
   flex-direction: row;
 `
 
 export const CardItem = styled.View`
+  justify-content: center;
+  align-items: center;
 
 `
 
 export const ImageView = styled.View`
-  border-radius: 12px;
+  margin-top: 24px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
 `
 
 export const CardImage = styled.Image<ImageSourceType>`
   width: 69.7px;
   height: 63.93px;
+  border-radius: 10px;
 `
 
 export const CardInfo = styled.Text`
   font-size: 10px;
+  margin-top: 8px;
+  color: #000000;
+  font-weight: 500;
+  font-family: 'Poppins-Medium'
 `

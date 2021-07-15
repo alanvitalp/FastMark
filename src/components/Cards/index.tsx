@@ -15,36 +15,14 @@ const Cards: React.FC = () => {
       </CardContainerLabel>
       <CardContainer>
         <CardItem>
-          <ImageView style={{
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            
-            elevation: 5,
-          }}>
+          <ImageView>
             <CardImage source={{ uri: master}} />
           </ImageView>
           <CardInfo>Final 9788</CardInfo>
         </CardItem>
         
         <CardItem>
-          <ImageView
-            style={{
-              shadowColor: "#000",
-              shadowOffset: {
-                width: 0,
-                height: 2,
-              },
-              shadowOpacity: 0.25,
-              shadowRadius: 3.84,
-              
-              elevation: 5,
-            }}
-          >
+          <ImageView>
           <CardImage source={{ uri: visa}}/>
           </ImageView>
           

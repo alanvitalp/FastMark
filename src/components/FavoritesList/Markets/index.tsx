@@ -2,22 +2,30 @@ import React from 'react';
 
 import { Container, MarketTitle, MarketImage } from './styles';
 
-type RestaurantProps = {
+import { RouteProp } from '@react-navigation/native';
+
+type MarketsProps = {
   restaurant: {
     id: number;
     img: string;
     name: string;
-    onPress: () => void;
   }
+  navigation: any;
+
 }
 
-const Restaurants: React.FC<RestaurantProps> = ( { restaurant: { id, img, name, onPress } } ) => {
+const Markets: React.FC<MarketsProps> = ( { restaurant: {  id, img, name  }, navigation } ) => {
+
+  const toMarket = () => {
+    navigation.navigate("Market", { id, img, name });
+  }
+
   return (
-  <Container onPress={onPress}>
+  <Container onPress={toMarket}>
     <MarketImage source={{ uri: img }}/>
     <MarketTitle>{name}</MarketTitle>
   </Container>
   );
 }
 
-export default Restaurants;
+export default Markets;

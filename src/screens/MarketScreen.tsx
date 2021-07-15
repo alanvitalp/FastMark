@@ -8,10 +8,19 @@ const Container = styled.ScrollView`
   flex: 1;
 `
 
-const MarketContainer = styled.View`
-  background: #C4C4C4;
+type MarketImagesProps = {
+  readonly url: string;
+}
+
+const MarketContainer = styled.View<MarketImagesProps>`
+  background: #FFFFFF;
   height: 230px;
   width: 100%;
+
+  background-image: url(${ props => props.url});
+  background-size: contain, cover;
+  background-repeat: no-repeat;
+  background-position: center; 
 `
 
 const DetailsContainer = styled.View`
@@ -28,24 +37,39 @@ const MarketDetailsContainer = styled.View`
   position: absolute;
   left: 4%;
   right: 4%;
-  top: 26%;
+  top: 23%;
   bottom: 52.59%;
 
   background: #FFFFFF;
   border-radius: 8px;
 `
 
-const ProductContainer = styled.ScrollView`
-  height: 323px;
+const ProductContainer = styled.View`
+  width: 100%;
+  height: 366px;
   background: ${({ theme }) => theme.colors.defaultYellow};
 `
 
+type MarketProps = {
+  market: {
+    id: number;
+    image: string;
+    name: string;
+  }
+}
 
-const MarketScreen: React.FC = () => {
+const MarketScreen: React.FC<MarketProps> = ({ route, navigation }: any) => {
+
+  const { id, img, name } = route.params;
+
+  const goBack = () => {
+    navigation.goBack();
+  }
+
   return (
     <Container>
-      <MarketContainer >
-        <ArrowContainer style={{
+      <MarketContainer url={img}>
+        <ArrowContainer onPress={goBack} style={{
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -61,9 +85,19 @@ const MarketScreen: React.FC = () => {
       </MarketContainer>
       <DetailsContainer>
       </DetailsContainer>
-      <MarketDetailsContainer>
+      <MarketDetailsContainer style={{
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 5,
+          },
+          shadowOpacity: 0.36,
+          shadowRadius: 6.68,
+          
+          elevation: 11,
+        }}>
         <TextContainer>
-          <Typography variant="h2">SUPERMERCADO</Typography>
+          <Typography variant="h2">{name}</Typography>
           <MarketAddress>Endereço do supermercado</MarketAddress>
           <OpenTime>Abre: 8 am - 8 pm</OpenTime>
         </TextContainer>

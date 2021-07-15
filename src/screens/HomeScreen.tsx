@@ -66,16 +66,10 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
     }
   ]);
 
-  const handleFavoriteNavigation = () => {
-    navigation.navigate('...')
-  }
-
-  
-  
   return (
     <Container>
       <Header/>
-      <Favorites favorites={favorites}/>
+      <Favorites nav={navigation} favorites={favorites}/>
       <BestPrices products={products}/>
     </Container>
   );

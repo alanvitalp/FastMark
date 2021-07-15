@@ -19,24 +19,34 @@ const Tab = createBottomTabNavigator();
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-const Stack = createStackNavigator();
+import MarketScreen from "./screens/MarketScreen";
 
-const MyStack = () => {
+const HomeStack = createStackNavigator();
+const SearchStack = createStackNavigator();
+
+const HomeStackScreen = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="home" component={Home} />
-      <Stack.Screen name="search" component={Search} />
-      <Stack.Screen name="shopping" component={Shopping} />
-      <Stack.Screen name="user" component={User} />
-    </Stack.Navigator>
+    <HomeStack.Navigator headerMode="none">
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="Market" component={MarketScreen} />
+    </HomeStack.Navigator>
   );
+}
+
+const SearchStackScreen = () => {
+  return (
+    <SearchStack.Navigator headerMode="none">
+      <SearchStack.Screen name="Search" component={Search}/>
+      <SearchStack.Screen name="Market" component={MarketScreen} />
+    </SearchStack.Navigator>
+  )
 }
 
 const Routes = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="user"
+        initialRouteName="home"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, tintColor }: any) => {
             if (route.name === 'home') {
@@ -85,8 +95,8 @@ const Routes = () => {
           },
         }}
       >
-        <Tab.Screen name="home" component={Home}/>
-        <Tab.Screen name="search" component={Market} />
+        <Tab.Screen name="home" component={HomeStackScreen}/>
+        <Tab.Screen name="search" component={SearchStackScreen} />
         <Tab.Screen name="shopping" component={Shopping} />
         <Tab.Screen name="user" component={User} />
       </Tab.Navigator>

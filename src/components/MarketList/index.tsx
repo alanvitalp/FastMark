@@ -7,12 +7,14 @@ import { FlatList } from 'react-native';
 
 type MarketProps = {
   markets: any;
+  nav: any;
 }
 
-const MarketList: React.FC<MarketProps> = ({ markets }) => {
+const MarketList: React.FC<MarketProps> = ({ markets, nav }) => {
   const renderItem = ({ item }: any ) => (
     <Markets
       markets={item}
+      navigation={nav}
     />
   );
 

@@ -21,7 +21,7 @@ export const HeaderText = styled.Text`
   font-family: "Poppins-Regular";
 ` 
 
-export const ArrowContainer = styled.View`
+export const ArrowContainer = styled.TouchableOpacity`
   background: #FFFFFF;
   width: 24px;
   height: 23.77px;
@@ -30,12 +30,12 @@ export const ArrowContainer = styled.View`
   left: 15px;
   top: 25px;
 
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
 `
 
 
-export const EditContainer = styled.View`
+export const EditContainer = styled.TouchableOpacity`
   background: #FFFFFF;
   /* width: 24px;
   height: 23.77px; */
@@ -52,6 +52,7 @@ export const EditContainer = styled.View`
 `
 
 export const LeftArrowIcon = styled(AntDesign)`
+  margin-left: 1px;
 `
 
 export const TextContainer = styled.View`

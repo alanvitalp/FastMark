@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components/native'
-import Routes from './src/routes';
 import theme from './src/styles/theme';
+import Routes from './src/routes';
 
 import * as Font from 'expo-font'
 

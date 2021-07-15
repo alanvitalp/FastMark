@@ -5,16 +5,21 @@ import { Container, MarketImage } from './styles';
 type MarketProps = {
   markets: {
     id: number;
-    image: string;
+    img: string;
     name: string;
-    onPress: () => void;
-  }
+  };
+  navigation: any;
 }
 
-const Markets: React.FC<MarketProps> = ( { markets: { id, image, name, onPress } } ) => {
+const Markets: React.FC<MarketProps> = ( { markets: { id, img, name } }, navigation ) => {
+
+  const handleNavigationToMarket = () => {
+    navigation.navigate("Market", {id, img, name});
+  }
+
   return (
-    <Container onPress={onPress}>
-      <MarketImage source={{ uri: image }}/>
+    <Container onPress={handleNavigationToMarket}>
+      <MarketImage source={{ uri: img }}/>
     </Container>
   );
 }
