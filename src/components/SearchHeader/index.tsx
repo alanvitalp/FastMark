@@ -5,7 +5,7 @@ import { Container, BackIcon, BackButton, TextContainer} from './styles';
 import Typography from '../Typography';
 
 type SearchHeaderProps = {
-  handleGoBack: () => void;
+  handleGoBack?: () => void;
 }
 
 const SearchHeader: React.FC<SearchHeaderProps> = ({ handleGoBack }) => {

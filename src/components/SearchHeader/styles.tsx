@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 
 import { AntDesign } from '@expo/vector-icons';
-import { ButtonProps } from 'react-native';
 
 export const Container = styled.View`
   flex-direction: row;

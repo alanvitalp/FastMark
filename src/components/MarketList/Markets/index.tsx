@@ -11,7 +11,7 @@ type MarketProps = {
   navigation: any;
 }
 
-const Markets: React.FC<MarketProps> = ( { markets: { id, img, name } }, navigation ) => {
+const Markets: React.FC<MarketProps> = ( { markets: { id, img, name }, navigation } ) => {
 
   const handleNavigationToMarket = () => {
     navigation.navigate("Market", {id, img, name});
@@ -19,7 +19,7 @@ const Markets: React.FC<MarketProps> = ( { markets: { id, img, name } }, navigat
 
   return (
     <Container onPress={handleNavigationToMarket}>
-      <MarketImage source={{ uri: img }}/>
+      <MarketImage source={{ uri: img }}/>þ
     </Container>
   );
 }

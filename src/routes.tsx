@@ -6,6 +6,9 @@ import Search from './screens/SearchScreen'
 import Shopping from './screens/ShoppingScreen'
 import User from "./screens/UserScreen";
 import Market from "./screens/MarketScreen";
+import Login from "./screens/LoginScreen";
+import SignUp from "./screens/SignUpScreen";
+import AddProduct from "./screens/AddProductScreen";
 
 
 import { AntDesign } from '@expo/vector-icons';
@@ -95,7 +98,7 @@ const Routes = () => {
           },
         }}
       >
-        <Tab.Screen name="home" component={HomeStackScreen}/>
+        <Tab.Screen name="home" component={AddProduct}/>
         <Tab.Screen name="search" component={SearchStackScreen} />
         <Tab.Screen name="shopping" component={Shopping} />
         <Tab.Screen name="user" component={User} />
