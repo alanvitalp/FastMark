@@ -5,8 +5,9 @@ import { ArrowContainer, LeftArrowIcon, EditContainer } from '../components/Head
 import styled from 'styled-components/native';
 
 import { Feather } from '@expo/vector-icons';
-import Forms from '../components/Forms';
 import Cards from '../components/Cards';
+import TabBar from '../components/TabBar';
+import { useGoogle } from '../contexts/AuthGoogle';
 
 
 type UserProps = {
@@ -15,9 +16,11 @@ type UserProps = {
 
 const Container = styled.View`
   flex: 1;
+  background : #c4c4c4;
 `
 const UserInfoContainer = styled.View`
   background : #c4c4c4;
+  margin-top: 50px;
   width: 100%;
   height: 209px;
 `
@@ -36,7 +39,7 @@ const FormsContainer = styled.View`
   border-radius: 8px;
 `
 
-const UserImage = styled.View`
+const UserImage = styled.View<any>`
   position: absolute;
   width: 171px;
   height: 174px;
@@ -45,10 +48,39 @@ const UserImage = styled.View`
 
   border-radius: 60px;
   background: ${({ theme }) => theme.colors.white};
-
 `
 
-const screens: React.FC<UserProps> = ({ navigation }) => {
+const GoogleImageUser = styled.Image`
+  border-radius: 60px;
+  flex: 1;
+`
+
+ const Forms = styled.View`
+  margin-top: 52px;
+  
+  align-items: center;
+`;
+
+ const Input = styled.TextInput`
+  width: 313px;
+  height: 40px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+
+  padding-left: 12px;
+
+  background: ${({ theme }) => theme.colors.tabIconColor};
+  color: #000000; 
+`
+
+const screens: React.FC<UserProps> = ({ navigation }: any) => {
+
+  const { user } = useGoogle();
+
+  const handleGoBack = () => {
+    navigation.goBack();
+  }
+
   return (
     <Container>
       <UserInfoContainer>
@@ -61,10 +93,12 @@ const screens: React.FC<UserProps> = ({ navigation }) => {
           shadowOpacity: 0.36,
           shadowRadius: 6.68,
           
-          elevation: 11}}>
+          elevation: 11}} onPress={handleGoBack}>
           <LeftArrowIcon name="left" size={20} color="#E84C4F"/>
         </ArrowContainer>
-        <UserImage  />
+        <UserImage>
+          <GoogleImageUser source={{ uri: user?.user.photoUrl }} style={{ resizeMode: 'cover' }}/>
+        </UserImage>
         <EditContainer style={{
           shadowColor: "#000",
           shadowOffset: {
@@ -80,7 +114,11 @@ const screens: React.FC<UserProps> = ({ navigation }) => {
       </UserInfoContainer>
       <FormBackgroundContainer>
         <FormsContainer>
-          <Forms />
+          <Forms>
+            <Input value={user?.user.name} editable={false}/>
+            <Input value={user?.user.email} editable={false}/>
+            <Input placeholder="endereço"/>
+          </Forms>
           <Cards/>
         </FormsContainer>
       </FormBackgroundContainer>

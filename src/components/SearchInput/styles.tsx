@@ -17,7 +17,6 @@ export const FilterInput = styled.TextInput`
 
   background: ${({ theme }) => theme.colors.greyBackground};
 
-  font-family: "Poppins-Regular"; 
 `
 
 export const SearchIcon = styled(AntDesign)`

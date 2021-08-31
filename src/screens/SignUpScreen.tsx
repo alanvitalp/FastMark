@@ -6,8 +6,7 @@ import styled from 'styled-components/native'
 import { Image } from 'react-native'
 import Typography from '../components/Typography'
 
-const logo = require("../../assets/images/logo.png")
-const signUp = require("../../assets/images/signup.png")
+
 
 import useInput from '../hooks/useInput'
 
@@ -30,7 +29,6 @@ const FormsContainer = styled.View`
 `
 
 const InputWrapper = styled.View`
-  gap: 28px;
   margin-top: 44px;
 `
 
@@ -40,10 +38,9 @@ const FormInput = styled.TextInput`
   background: #FFFFFF;
   padding: 10px;
   border-radius: 10px;
-  outline: none;
-  border: none;
+  margin-bottom: 34px;
 
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
 `
 
 const SignIn = styled.TouchableOpacity`
@@ -62,7 +59,7 @@ const LoginButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 
-  font-family: Poppins;
+  font-family: 'Poppins_500Medium';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -71,7 +68,7 @@ const LoginButton = styled.TouchableOpacity`
 ` 
 
 const SignUp = styled.TouchableOpacity`
-  font-family: 'Poppins-Medium';
+  font-family: 'Poppins_500Medium';
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -85,14 +82,16 @@ const SignUp = styled.TouchableOpacity`
   margin-top: -48px;
 `
 
-const Picker = styled.Picker`
-  outline: none;
-  border: none;
-  background: #FFFFFF;
-  padding-left: 10px;
+const PickerWrapper = styled.View`
   border-radius: 10px;
+  height: 40px;
+  width: 213px;
+  padding-left: 10px;
+  background: #FFFFFF;
+`
 
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+const Picker = styled.Picker`
+  height: 40px;
 `
 
 
@@ -145,24 +144,26 @@ const SignUpScreen = ({ navigation }: any) => {
   return (
     <Container>
       <FormsContainer>
-        <Image source={{  uri: logo }} style={{ width: 103, height: 80, marginTop: 24 }}/>
+
+        <Image source={require("../../assets/images/logo.png")} style={{ width: 103, height: 80, marginTop: 24 }}/>
         <InputWrapper>
-          <FormInput placeholder="NOME DE USUÁRIO"/>
-          <FormInput placeholder="CPF"/>
-          <FormInput placeholder="E-MAIL"/>
-          <FormInput placeholder="SENHA"/>
-          <Picker
-            selectedValue={selectedValue}
-            style={{ height: 40, width: 213  }}
-            onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-          >
-            <Picker.Item label="Comprar" value="Comprar" />
-            <Picker.Item label="Vender" value="Vender" />
-            <Picker.Item label="Entregar" value="Entregar" />
+          <FormInput placeholder="NOME DE USUÁRIO" onChange={username.onChange} value={username.value} />
+          <FormInput placeholder="SENHA" onChange={password.onChange} value={password.value} secureTextEntry={true}/>
+          <FormInput placeholder="CPF" onChange={cpf.onChange} value={cpf.value} />
+          <FormInput placeholder="E-MAIL" onChange={email.onChange} value={email.value}/>
+          <PickerWrapper>
+            <Picker
+              selectedValue={selectedValue}
+              onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+            >
+              <Picker.Item label="Comprar" value="Comprar" />
+              <Picker.Item label="Vender" value="Vender" />
+              <Picker.Item label="Entregar" value="Entregar" />
             </Picker>
+          </PickerWrapper>
         </InputWrapper>
         <SignIn>
-          <Image source={{ uri: signUp }}  style={{ width: 126, height: 21}}/>
+          <Image source={require("../../assets/images/signup.png")}  style={{ width: 126, height: 21}}/>
         </SignIn>
         <LoginButton onPress={handleCreateAccount}>
           <Typography variant="p">Cadastrar-se</Typography>

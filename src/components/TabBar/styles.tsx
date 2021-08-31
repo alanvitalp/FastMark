@@ -18,7 +18,6 @@ export const Icons = styled.View`
   align-items: center;
   flex-direction: row;
   color: ${({ theme }) => theme.colors.tabIconColor};
-  gap: 75px;
 `
 
 export const HomeIcon = styled(AntDesign)`

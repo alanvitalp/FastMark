@@ -1,4 +1,5 @@
 type AuthContextTypes = {
-  authenticatedUser: Object | null;
-  updateAuthenticatedUser: (user: Object | null) => void;
+  authenticatedUser: any;
+  setAuthenticatedUser: amy;
+  updateAuthenticatedUser: (user: any) => void;
 };

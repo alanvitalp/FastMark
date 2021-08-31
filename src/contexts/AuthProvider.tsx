@@ -12,17 +12,17 @@ type Props = {
 };
 
 const AuthProvider = ({ children }: Props) => {
-  const [authenticatedUser, setAuthenticatedUser] = useState<Object | null>(
+  const [authenticatedUser, setAuthenticatedUser] = useState<any>(
     null
   );
 
-  const updateAuthenticatedUser = (user: Object | null) => {
+  const updateAuthenticatedUser = (user: any) => {
     setAuthenticatedUser(user);
   };
 
   return (
     <AuthContext.Provider
-      value={{ authenticatedUser, updateAuthenticatedUser }}
+      value={{ authenticatedUser, updateAuthenticatedUser, setAuthenticatedUser }}
     >
       {children}
     </AuthContext.Provider>

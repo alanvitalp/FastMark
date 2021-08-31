@@ -29,7 +29,7 @@ const BestPrices: React.FC<BestPricesProps> = ({ products }) => {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={item => item.Id.toString()}
       />
     </Container>
   );

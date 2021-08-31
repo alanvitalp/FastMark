@@ -8,6 +8,7 @@ import MarketList from '../components/MarketList';
 
 const Container = styled.View`
   flex: 1;
+  align-items: center;
   background: ${({ theme }) => theme.colors.primary};
 `
 
@@ -22,9 +23,7 @@ const MarketsContainer = styled.View`
   height: 582px;
   background: ${({ theme }) => theme.colors.defaultYellow};
   border-radius: 8px;
-  margin-top: 26px;
-  margin-bottom: 20px;
-  margin-left: 15px;
+  margin-top: 40px;
 `
 type SearchProps = {
   navigation: any;

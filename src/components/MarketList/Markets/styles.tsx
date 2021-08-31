@@ -9,5 +9,4 @@ export const MarketImage = styled.Image`
   width: 69.7px;
   height: 63.93px;
   border-radius: 10px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `

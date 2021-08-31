@@ -1,8 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 
-const master = require("../../../assets/images/mastercard.png"); 
-const visa = require("../../../assets/images/visa.gif"); 
 
 import { CardContainerLabel, Container, CardContainer, CardImage, CardItem, CardInfo, ImageView } from './styles';
 
@@ -16,14 +14,14 @@ const Cards: React.FC = () => {
       <CardContainer>
         <CardItem>
           <ImageView>
-            <CardImage source={{ uri: master}} />
+            <CardImage source={require("../../../assets/images/mastercard.png")} />
           </ImageView>
           <CardInfo>Final 9788</CardInfo>
         </CardItem>
         
         <CardItem>
           <ImageView>
-          <CardImage source={{ uri: visa}}/>
+          <CardImage source={require("../../../assets/images/visa.gif")}/>
           </ImageView>
           
           <CardInfo>Final 4470</CardInfo>

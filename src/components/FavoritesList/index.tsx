@@ -21,7 +21,8 @@ const Favorites: React.FC<FavoritesProps> = ({ nav, favorites }) => {
   );
 
   return (
-    <FlatList
+    <Container>
+       <FlatList
       data={favorites}
       numColumns={4}
       pagingEnabled
@@ -29,6 +30,8 @@ const Favorites: React.FC<FavoritesProps> = ({ nav, favorites }) => {
       renderItem={renderItem}
       keyExtractor={item => item.id.toString()}
     />
+    </Container>
+   
   );
 }
 

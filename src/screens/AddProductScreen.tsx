@@ -37,7 +37,6 @@ const FormsContainer = styled.View`
   border-radius: 8px;
   padding: 52px 16px;
 
-  gap: 23px;
   align-items: center;
 `
 
@@ -58,13 +57,12 @@ const Button = styled.TouchableOpacity`
   margin-top: 24px;
 
   background: ${({ theme }) => theme.colors.defaultOrange};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 
   align-items: center;
   justify-content: center;
 
-  font-family: Poppins;
+  font-family: 'Poppins_500Medium';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -76,6 +74,7 @@ export const Input = styled.TextInput`
   width: 313px;
   height: 40px;
   border-radius: 10px;
+  margin-bottom: 24px;
 
   padding-left: 12px;
 

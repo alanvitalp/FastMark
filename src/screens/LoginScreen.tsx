@@ -2,14 +2,19 @@ import React from 'react'
 
 import styled from 'styled-components/native'
 
+import useInput from '../hooks/useInput'
+
 
 import { Image } from 'react-native'
 import Typography from '../components/Typography'
 
-const logo = require("../../assets/images/logo.png")
-const signIn = require("../../assets/images/signin.png")
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useAuthProvider } from "../contexts/AuthProvider";
 
 import { Link } from '@react-navigation/native';
+
+import { useEffect } from 'react'
+import { useGoogle } from '../contexts/AuthGoogle'
 
 
 const Container = styled.ScrollView`
@@ -28,7 +33,6 @@ const FormsContainer = styled.View`
 `
 
 const InputWrapper = styled.View`
-  gap: 38px;
   margin-top: 34px;
 `
 
@@ -38,12 +42,11 @@ const FormInput = styled.TextInput`
   background: #FFFFFF;
   padding: 10px;
   border-radius: 10px;
+  margin-bottom: 24px;
 
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `
 
 const SignIn = styled.TouchableOpacity`
-  margin-top: 31px;
 `
 
 const LoginButton = styled.TouchableOpacity`
@@ -58,7 +61,7 @@ const LoginButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 
-  font-family: Poppins;
+  font-family: 'Poppins_500Medium';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -67,7 +70,7 @@ const LoginButton = styled.TouchableOpacity`
 ` 
 
 const SignUp = styled.TouchableOpacity`
-  font-family: 'Poppins-Medium';
+  font-family: 'Poppins_500Medium';
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -81,26 +84,63 @@ const SignUp = styled.TouchableOpacity`
   margin-top: -48px;
 `
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }: any) => {
+  const { googleSignIn, user, typeAction } = useGoogle();
+  const { updateAuthenticatedUser } = useAuthProvider();
+
+  const username = useInput('')
+  const password = useInput('')
   
+  const handleLogin = async () => {
+    try {
+      const accounts = await AsyncStorage.getItem(
+        "@markefast/users"
+      );
+      if (accounts === null) return;
+
+      const users = JSON.parse(accounts);
+      const user = users.find(
+        (obj: any) => obj.username === username && obj.password === password
+      );
+
+      if (user) {
+        navigation.navigate('user', user)
+        updateAuthenticatedUser(user);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleLoginWithGoogle = async () => {
+    try {
+      await googleSignIn();
+
+      if (typeAction === "success") {
+        navigation.navigate('home', user);
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <Container>
       <FormsContainer>
-        <Image source={{  uri: logo }} style={{ width: 103, height: 80, marginTop: 54 }}/>
+        <Image source={require("../../assets/images/logo.png") } style={{ width: 103, height: 80, marginTop: 54 }}/>
         <InputWrapper>
           <FormInput placeholder="Login"/>
-          <FormInput placeholder="Senha"/>
+          <FormInput placeholder="Senha" secureTextEntry={true}/>
         </InputWrapper>
-        <SignIn>
-          <Image source={{ uri: signIn }}  style={{ width: 122, height: 30}}/>
+        <SignIn onPress={googleSignIn} >
+          <Image source={require("../../assets/images/signin.png")}  style={{ width: 122, height: 30}}/>
         </SignIn>
-        <LoginButton>
+        <LoginButton onPress={handleLogin}>
           <Typography variant="p">Logar</Typography>
         </LoginButton>
       </FormsContainer>
       <SignUp>
-       <Link to="/" style={{ color: "#FFFFFF", textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>Não tem uma conta? Cadastre-se</Link>
+       <Link to="/signUp" style={{ color: "#FFFFFF"}}>Não tem uma conta? Cadastre-se</Link>
       </SignUp>
     </Container>
   )

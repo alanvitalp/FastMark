@@ -15,7 +15,6 @@ export const Container = styled.View`
 
 export const CardContainerLabel = styled.Text`
   font-size: 14px;
-  font-family: 'Poppins-Regular';
   line-height: 20px;
 `
 
@@ -34,8 +33,6 @@ export const CardItem = styled.View`
 
 export const ImageView = styled.View`
   margin-top: 24px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
 `
 
 export const CardImage = styled.Image<ImageSourceType>`
@@ -49,5 +46,5 @@ export const CardInfo = styled.Text`
   margin-top: 8px;
   color: #000000;
   font-weight: 500;
-  font-family: 'Poppins-Medium'
+  font-family: 'Poppins_500Medium'
 `

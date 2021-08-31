@@ -5,39 +5,32 @@ import {
    Container,
    Card, 
    ProductPrice, 
-   Price, 
+   Value, 
    Discount, 
    Market, 
    Details,
-   ProductTitle} from './styles';
+   ProductTitle, ProductImage} from './styles';
 
 
-type ProductProps = {
-  product: {
-    id: number;
-    name: string;
-    market: string;
-    discountPrice: string;
-    price: string;
-    img: string;
-    onPress: () => void;
+
+const Products: React.FC<any> = ({ product: { Title, market, Price, ImageUrl, Category } }:any) => {
+  function getRandomArbitrary(min: number, max: number){
+    return (Math.random() * (max - min) + min)
   }
-} 
-
-const Products: React.FC<ProductProps> = ({ product: { id, name, market, discountPrice, price, img } }) => {
 
   return (
     <Container>
-      <Card url={img}>
+      <Card>
         <Details>
-          <ProductTitle>{name}</ProductTitle>
+          <ProductTitle>{Title}</ProductTitle>
+          <ProductTitle>{Category}</ProductTitle>
           <Market>{market}</Market>
           <ProductPrice>
-            <Discount>{discountPrice}</Discount>
-            <Price>{price}</Price>
+            <Value>{Price},00</Value>
           </ProductPrice>
         </Details>
       </Card>
+      <ProductImage style={{ resizeMode: 'contain', zIndex: 0, position: 'absolute', width: 330, height: 150, top: 20 }} source={ {uri: ImageUrl}} />
     </Container>
   );
 }

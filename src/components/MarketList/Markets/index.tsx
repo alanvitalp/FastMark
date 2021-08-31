@@ -19,7 +19,7 @@ const Markets: React.FC<MarketProps> = ( { markets: { id, img, name }, navigatio
 
   return (
     <Container onPress={handleNavigationToMarket}>
-      <MarketImage source={{ uri: img }}/>þ
+      <MarketImage source={`${img}`}/>
     </Container>
   );
 }

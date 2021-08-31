@@ -27,9 +27,10 @@ export const BackButton = styled.TouchableOpacity`
 ` 
 
 export const TextContainer = styled.View`
+  height: 58px;
   justify-content: center;
   align-items: center;
-  margin: 24px auto 10px -48px;
+  margin: 26px auto 10px -48px;
   flex: 1;
 `
 
@@ -43,7 +44,7 @@ const BackgroundContainer = styled.ScrollView`
 `
 
 const SocialDistancingContainer = styled.View`
-  height: 80px;
+  min-height: 100px;
   background: ${({ theme }) => theme.colors.defaultYellow};
   margin: 16px 15px;
   padding: 20px 12px;
@@ -52,11 +53,11 @@ const SocialDistancingContainer = styled.View`
 
 const SwitchWrapper = styled.View`
   flex-direction: row;
-  gap: 3rem;
 `
 
 const SocialSwitch = styled.Switch`
   height: 24px;
+  margin-left: 24px;
 `
 const UserAddress = styled.View`
   height: 140px;
@@ -64,7 +65,6 @@ const UserAddress = styled.View`
   margin: 16px 15px;
   padding: 20px 12px;
   border-radius: 8px;
-  gap: 0.5rem;
 `
 
 const InputWrapper = styled.View`
@@ -73,13 +73,13 @@ const InputWrapper = styled.View`
     justify-content: center;
     align-items: center;
     background: #fff;
+    margin-top: 12px;
 `
 
 const AddInfo = styled.TextInput`
   flex: 1;
   background: #FFFFFF;
   padding: 10px 10px 10px 0;
-  outline: none;
   border: none;
 `
 
@@ -93,7 +93,7 @@ const ShoppingCart = styled.View`
 
 const TextWrapper = styled.View`
   flex-direction: row;
-  gap: 21px;
+  justify-content: space-between;
 `
 
 const PaymentContainer = styled.View`
@@ -175,7 +175,6 @@ const screens: React.FC<ShoppingProps> = ({ navigation }) => {
           <Typography variant="h3">Itens no carrinho</Typography>
           <Typography variant="p">+ Add items</Typography>
         </TextWrapper>
-        { cart.length !== 0 ? <Text>Hello world!</Text> : <Typography style={{ alignSelf: 'center', marginTop: '2.5 rem' }}variant="p">Carrinho vazio</Typography>} 
       </ShoppingCart>
       <PaymentContainer>
         <Typography variant="h3">Payment</Typography>
