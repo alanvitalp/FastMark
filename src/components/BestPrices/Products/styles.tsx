@@ -1,12 +1,12 @@
 import styled from 'styled-components/native';
 
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.View`
   margin-top: 26px;
   position: relative;
 `;
 
-export const Card = styled.View`
+export const Card = styled.TouchableOpacity`
   background: ${({ theme }) => theme.colors.defaultYellow};
   width: 292px;
   min-height: 333px;

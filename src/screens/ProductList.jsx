@@ -34,11 +34,13 @@ function renderProduct({item: product}) {
 const styles = StyleSheet.create({
   productsList: {
     backgroundColor: '#C70039',
+
   },
   productsListContainer: {
     backgroundColor: '#FFC301',
     paddingHorizontal: 24,
     paddingVertical: 24,
     marginHorizontal: 16,
+    borderRadius: 12,
   },
 });

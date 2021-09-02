@@ -5,10 +5,13 @@ import styled from 'styled-components/native';
 import Typography from '../components/Typography';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import { Text, Platform } from 'react-native';
+import { Text, Platform, TouchableOpacity, View } from 'react-native';
 import { CartContext } from '../contexts/CartContext';
 import { FlatList } from 'react-native-gesture-handler';
 import { Product } from '../components/Product';
+import { ProductsListCart } from '../components/ProductListCart';
+import useInput from '../hooks/useInput';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const Container = styled.View`
   flex-direction: row;
@@ -57,11 +60,12 @@ const SocialSwitch = styled.Switch`
   margin-left: 24px;
 `
 const UserAddress = styled.View`
-  height: 140px;
+  min-height: 140px;
   background: ${({ theme }) => theme.colors.defaultYellow};
   margin: 16px 15px;
   padding: 20px 12px;
   border-radius: 8px;
+
 `
 
 const InputWrapper = styled.View`
@@ -75,8 +79,6 @@ const InputWrapper = styled.View`
 
 const AddInfo = styled.TextInput`
   flex: 1;
-  background: #FFFFFF;
-  padding: 10px 10px 10px 0;
   border: none;
 `
 
@@ -123,13 +125,39 @@ const ToPay = styled.View`
   justify-content: space-between;
 `
 
+const Observation = styled.View`
+  padding: 8px 10px;
+  justify-content: center;
+`
+
+const TextObs = styled.Text`
+  color: #FFFFFF;
+  font-size: 16px;
+`
+
+const Item = ({ item }) => (
+  <Observation>
+    <TextObs>* {item}</TextObs>
+  </Observation>
+);
+
+
+
 const screens = ({ navigation }) => {
+  const renderItem = ({ item }) => (
+    <Item item={item} />
+  );
 
-  const { items, getItemsCount, getTotalPrice } = useContext(CartContext);
 
-  console.log(items);
+  const { getTotalPrice } = useContext(CartContext);
 
   const [total, setTotal] = useState(0);
+  const [observations, setObservations] = useState([]);
+  const [message, setMessage] = useState('');
+
+  const addObs = () => {
+    setObservations(oldArray => [...oldArray, message]);
+  };
 
   useEffect(() => {
     setTotal(getTotalPrice());
@@ -139,17 +167,12 @@ const screens = ({ navigation }) => {
     navigation.goBack();
   }
 
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
-
-  function renderProduct({item}) {
-    return (
-      <Product {...item} />
-    );
+  const handleGoToProducts= () => {
+    navigation.navigate('Products');
   }
 
-  console.log(items)
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   return (
     <>
@@ -166,28 +189,33 @@ const screens = ({ navigation }) => {
         <SwitchWrapper>
           <Typography variant="p">Manter distanciamento social</Typography>
           <SocialSwitch 
-          thumbColor={Platform.OS=='ios'?'#E84C4F':(isEnabled ?'#E84C4F':'#E84C4F')}
+          thumbColor={Platform.OS=='ios'?'#E84C4F':(isEnabled ? '#E84C4F' : 'white')}
           trackColor={{false: "#FFFFFF", true: "#FFFFFF"}}
           onValueChange={toggleSwitch} value={isEnabled}   
           />
-        
         </SwitchWrapper>
-        
       <Typography variant="p">Não receber diretamente com o entregador</Typography>
       </SocialDistancingContainer>
       <UserAddress>
         <Typography variant="p">Entregar em:</Typography>
         <Typography variant="p">Rua do usuário, 2021</Typography>
         <InputWrapper>
-          <Ionicons name="add" size={24} style={{ padding: 10 }}color="black" />
-          <AddInfo placeholder="Observações adicionais"/>
+          <TouchableOpacity onPress={addObs} ><Ionicons name="add" size={24} style={{ padding: 10 }}color="black" /></TouchableOpacity>
+          <AddInfo defaultValue={message} onChangeText={text => setMessage(text)} placeholder="Observações adicionais"/>
         </InputWrapper>
+        <SafeAreaView>
+          <FlatList
+            data={observations}
+            renderItem={renderItem}
+          />
+        </SafeAreaView>
       </UserAddress>
       <ShoppingCart>
         <TextWrapper>
           <Typography variant="h3">Itens no carrinho</Typography>
-          <Typography variant="p">+ Add items</Typography>
+          <TouchableOpacity onPress={handleGoToProducts}><Typography variant="p">+ Add items</Typography></TouchableOpacity>
         </TextWrapper>
+        <ProductsListCart />
       </ShoppingCart>
       <PaymentContainer>
         <Typography variant="h3">Payment</Typography>

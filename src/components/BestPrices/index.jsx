@@ -1,26 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { FlatList } from 'react-native';
 
 import { Container, BestPricesTitle, SeeAll, SeeAllLabel, LabelContainer } from './styles';
 
 import Products from './Products';
+import { getProducts } from '../../services/productsServices';
+import { Product } from '../Product';
 
-type BestPricesProps = {
-  products: any;
-  nav: any;
-}
 
-const BestPrices: React.FC<BestPricesProps> = ({ products, nav }) => {
-  const renderItem = ({ item }: any ) => (
-    <Products
-      product={item}
-    />
-  );
+const BestPrices = ({ nav }) => {
+  function renderProduct({item: product}) {
+    return (
+      <Products {...product} 
+      onPress={() => {
+        nav.navigate('ProductDetails', {
+          productId: product.Id,
+        });
+      }}
+      />
+    );
+  }
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setProducts(getProducts());
+  });
 
   const handleToProduct = () => {
     nav.navigate('Products'); 
+    
   }
+
   return (
     <Container>
       <LabelContainer>
@@ -28,11 +39,11 @@ const BestPrices: React.FC<BestPricesProps> = ({ products, nav }) => {
         <SeeAll onPress={handleToProduct}><SeeAllLabel>Ver todos</SeeAllLabel></SeeAll>
       </LabelContainer>
       <FlatList
-        data={products}
+        data={products.slice(0, 6)}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        renderItem={renderItem}
+        renderItem={renderProduct}
         keyExtractor={item => item.Id.toString()}
       />
     </Container>

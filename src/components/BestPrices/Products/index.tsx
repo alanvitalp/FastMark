@@ -12,25 +12,22 @@ import {
    ProductTitle, ProductImage} from './styles';
 
 
-
-const Products: React.FC<any> = ({ product: { Title, market, Price, ImageUrl, Category } }:any) => {
+const Products: React.FC<any> = ({ Title, Price, ImageUrl, onPress }:any) => {
   function getRandomArbitrary(min: number, max: number){
     return (Math.random() * (max - min) + min)
   }
 
   return (
     <Container>
-      <Card>
+      <Card onPress={onPress}> 
         <Details>
           <ProductTitle>{Title}</ProductTitle>
-          <ProductTitle>{Category}</ProductTitle>
-          <Market>{market}</Market>
           <ProductPrice>
             <Value>{Price},00</Value>
           </ProductPrice>
         </Details>
+        <ProductImage style={{ resizeMode: 'contain', zIndex: 0, position: 'absolute', width: 330, height: 150, top: 20 }} source={ {uri: ImageUrl}} />
       </Card>
-      <ProductImage style={{ resizeMode: 'contain', zIndex: 0, position: 'absolute', width: 330, height: 150, top: 20 }} source={ {uri: ImageUrl}} />
     </Container>
   );
 }

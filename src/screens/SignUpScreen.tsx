@@ -98,10 +98,10 @@ const Picker = styled.Picker`
 const SignUpScreen = ({ navigation }: any) => {
   const [selectedValue, setSelectedValue] = useState("Comprar");
 
-  const username = useInput('')
-  const cpf = useInput('')
-  const email = useInput('')
-  const password = useInput('')
+  const [username, setUsername] = useState('')
+  const [cpf, setCpf] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleCreateAccount = async () => {
     try {
@@ -147,10 +147,10 @@ const SignUpScreen = ({ navigation }: any) => {
 
         <Image source={require("../../assets/images/logo.png")} style={{ width: 103, height: 80, marginTop: 24 }}/>
         <InputWrapper>
-          <FormInput placeholder="NOME DE USUÁRIO" onChange={username.onChange} value={username.value} />
-          <FormInput placeholder="SENHA" onChange={password.onChange} value={password.value} secureTextEntry={true}/>
-          <FormInput placeholder="CPF" onChange={cpf.onChange} value={cpf.value} />
-          <FormInput placeholder="E-MAIL" onChange={email.onChange} value={email.value}/>
+          <FormInput placeholder="NOME DE USUÁRIO" onChangeText={text => setUsername(text)} value={username} />
+          <FormInput placeholder="SENHA" onChangeText={text => setPassword(text)} value={password} secureTextEntry={true}/>
+          <FormInput placeholder="CPF" onChangeText={text => setCpf(text)} value={cpf} />
+          <FormInput placeholder="E-MAIL" onChangeText={text => setEmail(text)} value={email}/>
           <PickerWrapper>
             <Picker
               selectedValue={selectedValue}

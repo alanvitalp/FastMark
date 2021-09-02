@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import styled from 'styled-components/native'
 
@@ -88,8 +88,8 @@ const LoginScreen = ({ navigation }: any) => {
   const { googleSignIn, user, typeAction } = useGoogle();
   const { updateAuthenticatedUser } = useAuthProvider();
 
-  const username = useInput('')
-  const password = useInput('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   
   const handleLogin = async () => {
     try {
@@ -112,25 +112,13 @@ const LoginScreen = ({ navigation }: any) => {
     }
   };
 
-  const handleLoginWithGoogle = async () => {
-    try {
-      await googleSignIn();
-
-      if (typeAction === "success") {
-        navigation.navigate('home', user);
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   return (
     <Container>
       <FormsContainer>
         <Image source={require("../../assets/images/logo.png") } style={{ width: 103, height: 80, marginTop: 54 }}/>
         <InputWrapper>
-          <FormInput placeholder="Login"/>
-          <FormInput placeholder="Senha" secureTextEntry={true}/>
+          <FormInput value={username} onChangeText={text => setUsername(text)}placeholder="Login"/>
+          <FormInput value={password} onChangeText={text => setPassword(text)} placeholder="Senha" secureTextEntry={true}/>
         </InputWrapper>
         <SignIn onPress={googleSignIn} >
           <Image source={require("../../assets/images/signin.png")}  style={{ width: 122, height: 30}}/>

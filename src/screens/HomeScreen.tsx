@@ -34,14 +34,6 @@ type ProductType = {
 }
 
 const Home: React.FC<HomeProps> = ({ navigation }) => {
-  const { authenticatedUser, updateAuthenticatedUser } = useAuthProvider();
-
-  const [products, setProducts] = useState<ProductType[]>([]);
-
-  useEffect(() => {
-    return setProducts(getProducts());
-  });
-
   const [favorites, setFavorites] = useState([
     {
       id: 1,
@@ -69,7 +61,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
     <Container>
       <Header/>
       <Favorites nav={navigation} favorites={favorites}/> 
-      <BestPrices nav={navigation} products={products.slice(0, 5)}/>
+      <BestPrices nav={navigation} />
     </Container>
 );
 }
