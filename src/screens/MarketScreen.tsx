@@ -10,15 +10,11 @@ import Typography from '../components/Typography';
 import { StyleSheet, Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
-const Container = styled.ScrollView`
+const Container = styled.View`
   flex: 1;
 `
 
-type MarketImagesProps = {
-  readonly url: string;
-}
-
-const MarketContainer = styled.View<MarketImagesProps>`
+const MarketContainer = styled.View`
   background: #FFFFFF;
   height: 230px;
   width: 100%;
@@ -45,7 +41,7 @@ const MarketDetailsContainer = styled.View`
   border-radius: 8px;
 `
 
-const ProductContainer = styled.ScrollView`
+const ProductContainer = styled.View`
   width: 100%;
   min-height: 404px;
   background: ${({ theme }) => theme.colors.defaultYellow};
@@ -216,7 +212,7 @@ const MarketScreen: React.FC<MarketProps> = ({ route, navigation }: any) => {
 
   return (
     <Container>
-      <MarketContainer url={img}>
+      <MarketContainer>
         <ArrowContainer onPress={goBack} style={{
           shadowColor: "#000",
           shadowOffset: {

@@ -1,13 +1,14 @@
 import React from 'react';
+import { useGoogle } from '../../contexts/AuthGoogle';
 import { Head, HeaderTitle, HeaderText } from './styles'
 
-// import { Container } from './styles';
 
 const Header: React.FC = () => {
+  const { user } = useGoogle();
   return (
     <Head>
       <HeaderTitle>
-        Olá Usuário,
+        Olá {user},
       </HeaderTitle>
       <HeaderText>
         Separamos os seus supermercados favoritos.

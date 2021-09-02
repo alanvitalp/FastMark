@@ -9,6 +9,9 @@ import Market from "./screens/MarketScreen";
 import Login from "./screens/LoginScreen";
 import SignUp from "./screens/SignUpScreen";
 import AddProduct from "./screens/AddProductScreen";
+import  {ProductsList}  from './screens/ProductList';
+import  {ProductDetails}  from './screens/productDetails';
+
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useAuthProvider } from "../src/contexts/AuthProvider";
@@ -26,10 +29,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import MarketScreen from "./screens/MarketScreen";
 import { useGoogle } from "./contexts/AuthGoogle";
+import { CartIcon } from "./components/CartIcon";
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
 const SearchStack = createStackNavigator();
+const CartStack = createStackNavigator();
 const AuthStack = createStackNavigator()
 const AppStack = createStackNavigator()
 
@@ -172,7 +177,7 @@ const TabBottomNavigation = () => {
       >
         <Tab.Screen name="home" component={HomeStackScreen}/>
         <Tab.Screen name="search" component={Search} />
-        <Tab.Screen name="shopping" component={Shopping} />
+        <Tab.Screen name="shopping" component={CartStackScreen} />
         <Tab.Screen name="user" component={User} />
       </Tab.Navigator>
   )
@@ -184,8 +189,37 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator headerMode="none">
       <HomeStack.Screen name="Home" component={Home} />
       <HomeStack.Screen name="Market" component={MarketScreen} />
+      <CartStack.Screen name='Products' component={ProductsList} 
+          options={({ navigation }) => ({
+            title: 'Products',
+            headerRight: () => <CartIcon navigation={navigation}/>
+          })}/>
+        <CartStack.Screen name='ProductDetails' component={ProductDetails} 
+          options={({ navigation }) => ({
+            title: 'Product details',
+            headerRight: () => <CartIcon navigation={navigation}/>,
+          })} />
+      <CartStack.Screen name="shopping" component={Shopping}/>
     </HomeStack.Navigator>
   );
+}
+
+const CartStackScreen = () => {
+  return (
+    <CartStack.Navigator headerMode="none">
+        <CartStack.Screen name="shopping" component={Shopping}/>
+        <CartStack.Screen name='Products' component={ProductsList} 
+          options={({ navigation }) => ({
+            title: 'Products',
+            headerRight: () => <CartIcon navigation={navigation}/>
+          })}/>
+          <CartStack.Screen name='ProductDetails' component={ProductDetails} 
+          options={({ navigation }) => ({
+            title: 'Product details',
+            headerRight: () => <CartIcon navigation={navigation}/>,
+          })} />
+    </CartStack.Navigator>
+  )
 }
 
 const Routes = () => {

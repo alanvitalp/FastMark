@@ -8,20 +8,24 @@ import Products from './Products';
 
 type BestPricesProps = {
   products: any;
+  nav: any;
 }
 
-const BestPrices: React.FC<BestPricesProps> = ({ products }) => {
+const BestPrices: React.FC<BestPricesProps> = ({ products, nav }) => {
   const renderItem = ({ item }: any ) => (
     <Products
       product={item}
     />
   );
 
+  const handleToProduct = () => {
+    nav.navigate('Products'); 
+  }
   return (
     <Container>
       <LabelContainer>
         <BestPricesTitle>Melhores preços hoje</BestPricesTitle>
-        <SeeAll><SeeAllLabel>Ver todos</SeeAllLabel></SeeAll>
+        <SeeAll onPress={handleToProduct}><SeeAllLabel>Ver todos</SeeAllLabel></SeeAll>
       </LabelContainer>
       <FlatList
         data={products}

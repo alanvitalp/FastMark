@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import styled from 'styled-components/native';
 
-import * as styles from '../components/SearchHeader/styles'
 import Typography from '../components/Typography';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Text, Platform } from 'react-native';
-
-type ShoppingProps = {
-  navigation: any;
-}
-
+import { CartContext } from '../contexts/CartContext';
+import { FlatList } from 'react-native-gesture-handler';
+import { Product } from '../components/Product';
 
 export const Container = styled.View`
   flex-direction: row;
@@ -126,10 +123,17 @@ const ToPay = styled.View`
   justify-content: space-between;
 `
 
+const screens = ({ navigation }) => {
 
-const screens: React.FC<ShoppingProps> = ({ navigation }) => {
+  const { items, getItemsCount, getTotalPrice } = useContext(CartContext);
 
-  const [cart, setCart] = useState([]);
+  console.log(items);
+
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setTotal(getTotalPrice());
+  });
   
   const handleGoBack = () => {
     navigation.goBack();
@@ -137,6 +141,15 @@ const screens: React.FC<ShoppingProps> = ({ navigation }) => {
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+
+  function renderProduct({item}) {
+    return (
+      <Product {...item} />
+    );
+  }
+
+  console.log(items)
 
   return (
     <>
@@ -160,7 +173,7 @@ const screens: React.FC<ShoppingProps> = ({ navigation }) => {
         
         </SwitchWrapper>
         
-        <Typography variant="p">Não receber diretamente com o entregador</Typography>
+      <Typography variant="p">Não receber diretamente com o entregador</Typography>
       </SocialDistancingContainer>
       <UserAddress>
         <Typography variant="p">Entregar em:</Typography>
@@ -180,16 +193,16 @@ const screens: React.FC<ShoppingProps> = ({ navigation }) => {
         <Typography variant="h3">Payment</Typography>
         <TotalValue>
           <Typography variant="p">Valor total</Typography>
-          <Typography variant="p">R$0,00</Typography>
+          <Typography variant="p">R${total}</Typography>
         </TotalValue>
         <Economy>
           <Typography variant="p">Você economiza</Typography>
-          <Typography variant="p">R$0,00</Typography>
+          <Typography variant="p">R$0</Typography>
         </Economy>
         <Divider/>
         <ToPay>
           <Typography variant="p">A pagar</Typography>
-          <Typography variant="p">R$0,00</Typography>
+          <Typography variant="p">R${total}</Typography>
         </ToPay>
       </PaymentContainer>
     </BackgroundContainer>
